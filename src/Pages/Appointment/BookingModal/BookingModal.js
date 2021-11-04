@@ -22,8 +22,17 @@ const style = {
 
 
 
-const BookingModal = ({openBooking, handleCloseBooking, booking}) => {
-    const {name, time, space}=booking;
+const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
+    const {name, time}=booking;
+    const  handleBookingSubmit=e=> {
+      alert('Submitted');
+
+
+      
+      handleCloseBooking()
+      e.preventDefault();
+    }
+
     return (
         
         <Modal
@@ -42,13 +51,39 @@ const BookingModal = ({openBooking, handleCloseBooking, booking}) => {
             <Typography id="transition-modal-title" variant="h6" component="h6">
               {name}
             </Typography>
-            <form action="">
-            <TextField
+            <form onClick={handleBookingSubmit}>
+            <TextField sx={{width: '90%', mb: 3}}
           id="filled-size-small"
-          defaultValue="Small"
+          defaultValue={time}
+          variant="filled"
+          size="small" disabled
+        />
+            <TextField sx={{width: '90%', mb: 3}}
+          id="filled-size-small"
+          defaultValue="Patient Name"
           variant="filled"
           size="small"
+          placeholder="Patient Name"
         />
+            <TextField sx={{width: '90%', mb: 3}}
+          id="filled-size-small"
+          variant="filled"
+          size="small"
+          placeholder="Phone"
+        />
+            <TextField sx={{width: '90%', mb: 3}}
+          id="filled-size-small"
+          variant="filled"
+          size="small"
+          placeholder="Email"
+        />
+         <TextField sx={{width: '90%', mb: 3}}
+          id="filled-size-small"
+          defaultValue={date.toDateString()}
+          variant="filled"
+          size="small" disabled
+        />
+        <Button variant="contained">Book Now</Button>
             </form>
 
           </Box>
