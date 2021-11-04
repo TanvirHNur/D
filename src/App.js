@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
 import Appointment from './Pages/Appointment/Appointment/Appointment';
+import Footer from './Pages/Shared/Footer/Footer';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        <Footer></Footer>
     </Router>
     </div>
   );
