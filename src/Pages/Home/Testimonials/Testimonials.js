@@ -18,7 +18,7 @@ const Testimonials = () => {
             <Typography variant="h6" style={{color: '#5CE7ED'}}>
                 Testimonial
             </Typography>
-            <Typography variant="h3">
+            <Typography variant="h3" sx={{mb: 3}}>
                 What's Our Patients <br />
                 Says
                 
@@ -26,7 +26,7 @@ const Testimonials = () => {
             </Box>
 
             <Box>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container sx={{mx:4}} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         
             {
                 patients.map(patient => <Testmonial
