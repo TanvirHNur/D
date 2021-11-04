@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 
 const style = {
   position: 'absolute',
@@ -41,9 +42,15 @@ const BookingModal = ({openBooking, handleCloseBooking, booking}) => {
             <Typography id="transition-modal-title" variant="h6" component="h6">
               {name}
             </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              {time}
-            </Typography>
+            <form action="">
+            <TextField
+          id="filled-size-small"
+          defaultValue="Small"
+          variant="filled"
+          size="small"
+        />
+            </form>
+
           </Box>
         </Fade>
       </Modal>
