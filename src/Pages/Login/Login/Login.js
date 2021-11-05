@@ -30,10 +30,7 @@ const Login = (e) => {
       id="standard-basic" label="Your Email" variant="standard" />
       <TextField sx={{width: "75%", m:1}}  onChange={handleOnchange}  name="password" id="standard-basic" label="Your Email" variant="standard" type="password" />
       <br />
-      
-    <Button type="submit" variant="container" style={{color: '#5CE7ED'}}>
-      Login
-    </Button>
+      <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{backgroundColor: '#5CE7ED'}}>Login</Button>
     <br />
       <NavLink to="/register" style={{textDecoration: 'none'}}>
       <Button variant="text">New to Doctor's Portal?</Button>
