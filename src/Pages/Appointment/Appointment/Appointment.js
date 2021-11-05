@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import AppointmentAvailable from '../AppointmentAvailable/AppointmentAvailable';
 import AppointmentHeader from '../AppointmentHeader/AppointmentHeader';
@@ -13,6 +14,7 @@ const Appointment = () => {
                 setDate={setDate}
             ></AppointmentHeader>
             <AppointmentAvailable date={date} setDate={setDate}></AppointmentAvailable>
+            <Footer/>
         </div>
     );
 };
