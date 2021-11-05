@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import initializeFirebaseAuth from "../Pages/Login/firebase/firebase.init";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { set } from "date-fns";
 
 initializeFirebaseAuth();
 
@@ -29,11 +28,12 @@ const useFirebase = () => {
   .finally( () => setIsLoading(false));
     };
 
-    const logIn = (email, password) => {
+    const logIn = (email, password, location, histroy) => {
       setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    // Signed in     
+    const destination = location?.state?.from || '/';
+    histroy.replace(destination);
     setAuthError('');
 
   })

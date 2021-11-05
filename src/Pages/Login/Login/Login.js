@@ -19,7 +19,7 @@ const Login = (e) => {
       setLoginDate(newLoginData)
   }
   const handleSubmit = e =>{
-    logIn(loginData.email, loginData.password)
+    logIn(loginData.email, loginData.password,location,histroy)
 
     e.preventDefault()
   };
