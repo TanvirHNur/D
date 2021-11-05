@@ -1,8 +1,9 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import login from '../../images/login.png'
+import { NavLink } from 'react-router-dom';
+import login from '../../../images/login.png'
 
-const Login = (e) => {
+const Register = (e) => {
   const [loginData, setLoginDate] =  useState({})
   const handleOnchange = e =>{
       const field = e.target.name;
@@ -22,16 +23,22 @@ const Login = (e) => {
             <Grid container spacing={2}>
   <Grid item xs={12} md={6} sx={{mt:8}}>
   <Typography variant="body1" gutterBottom>
-       Login
+       Register
       </Typography>
     <form onSubmit={handleSubmit}>
       <TextField sx={{width: "75%", m:1}} onChange={handleOnchange}  name="email"
       id="standard-basic" label="Your Email" variant="standard" />
-      <TextField sx={{width: "75%", m:1}}  onChange={handleOnchange}  name="password" id="standard-basic" label="Your Email" variant="standard" type="password" />
+      <TextField sx={{width: "75%", m:1}}  onChange={handleOnchange}  name="password" id="standard-basic" label="password" variant="standard" type="password" />
+      <TextField sx={{width: "75%", m:1}}  onChange={handleOnchange}  name="password2" id="standard-basic" label="Retype Your password" variant="standard" type="password" />
       <br />
+      
     <Button type="submit" variant="container" style={{color: '#5CE7ED'}}>
-      Login
+      Register
     </Button>
+    <br />
+      <NavLink to="/login" style={{textDecoration: 'none'}}>
+      <Button variant="text">Have An Account?</Button>
+      </NavLink>
     </form>
   </Grid>
   <Grid item xs={12} md={6}>
@@ -43,4 +50,4 @@ const Login = (e) => {
     );
 };
 
-export default Login;
+export default Register;
