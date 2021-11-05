@@ -10,6 +10,7 @@ import Appointment from './Pages/Appointment/Appointment/Appointment';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 
 function App() {
@@ -18,9 +19,9 @@ function App() {
         <AuthProvider>
         <Router>
     <Switch>
-          <Route path="/appointment">
+          <PrivateRoute path="/appointment">
             <Appointment/>
-          </Route>
+          </PrivateRoute>
           <Route path="/home">
             <Home />
           </Route>
