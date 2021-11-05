@@ -10,7 +10,7 @@ import {  NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
-  const {user, logOut}= useAuth()
+  const {user, logOut}= useAuth();
     return (
         <div>
             <Box sx={{ flexGrow: 1 }}>

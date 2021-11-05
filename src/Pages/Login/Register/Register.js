@@ -1,10 +1,12 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import login from '../../../images/login.png'
 
 const Register = (e) => {
   const [loginData, setLoginDate] =  useState({});
+  const {registerUser} = useAuth();
 
   const handleOnchange = e =>{
       const field = e.target.name;
@@ -14,11 +16,12 @@ const Register = (e) => {
       setLoginDate(newLoginData)
   }
   const handleSubmit = e =>{
+    e.preventDefault()
       if(loginData.password !== loginData.password2){
           alert('Password did not match')
           return;
       }
-    e.preventDefault()
+      registerUser(loginData.email, loginData.password)
   };
 
     return (
