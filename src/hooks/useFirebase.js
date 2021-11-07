@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import initializeFirebaseAuth from "../Pages/Login/firebase/firebase.init";
 import { getAuth, createUserWithEmailAndPassword, updateProfile,  signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { display } from "@mui/system";
 
 initializeFirebaseAuth();
 

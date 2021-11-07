@@ -7,8 +7,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import useAuth from '../../../hooks/useAuth';
-import { ConstructionOutlined } from '@mui/icons-material';
-import { Alert } from '@mui/material';
 
 const style = {
   position: 'absolute',
