@@ -47,7 +47,7 @@ const AppointmentAvailable = ({date}) => {
         <Container>
             <Typography variant="h4" sx={{color: 'info.main' , mb: 3}}>Available Appointment on {date.toDateString()} </Typography>
             {
-                bookingSuccess && <Alert sx={{ width: '1', m: 1 }} severity="success">Appointment Booked successfully!</Alert>
+                bookingSuccess && <Alert sx={{ width: '75%', m: 1 }} severity="success">Appointment Booked successfully!</Alert>
             }
             <Grid container spacing={2}>
                  {
