@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -26,10 +26,24 @@ const style = {
 const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
     const {name, time}=booking;
     const {user} = useAuth();
+    const initailInfo = {patientName: user.displayName, email: user.email, phone: ''} 
+    const [bookinginfo, setBookingInfo] = useState(initailInfo);
+
+    const handleOnBlur = (e) => {
+      const field = e.target.value;
+      const value = e.target.value;
+      const newInfo = {...bookinginfo};
+      newInfo[field] = value;
+      // console.log(newInfo)
+      setBookingInfo(newInfo);
+    }
     const  handleBookingSubmit=e=> {
-      alert('Submitted');
-
-
+      const appointment = {
+        ...bookinginfo,
+        time: time,
+        servicesName: name,
+        date: date.toLocaleDateString()
+      };
       
       handleCloseBooking()
       e.preventDefault();
@@ -62,6 +76,8 @@ const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
         />
             <TextField sx={{width: '90%', mb: 3}}
           id="filled-size-small"
+          name="patientName"
+          onBlur={handleOnBlur}
           defaultValue={user.displayName}
           variant="filled"
           size="small"
@@ -69,13 +85,17 @@ const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
         />
             <TextField sx={{width: '90%', mb: 3}}
           id="filled-size-small"
+          name="phone"
+          onBlur={handleOnBlur}
           variant="filled"
           size="small"
           placeholder="Phone"
         />
             <TextField sx={{width: '90%', mb: 3}}
           id="filled-size-small"
+          name="email"
           variant="filled"
+          onBlur={handleOnBlur}
           size="small"
           defaultValue={user.email}
         />
