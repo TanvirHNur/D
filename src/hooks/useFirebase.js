@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import initializeFirebaseAuth from "../Pages/Login/firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 initializeFirebaseAuth();
 
@@ -11,6 +11,7 @@ const useFirebase = () => {
     const [authError, setAuthError] = useState('');
 
     const auth = getAuth();
+    const GoogleProvider = new GoogleAuthProvider();
 
     const registerUser = (email, password) => {
       setIsLoading(true)
@@ -29,7 +30,7 @@ const useFirebase = () => {
     };
 
     const logIn = (email, password, location, histroy) => {
-      setIsLoading(true)
+      setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const destination = location?.state?.from || '/';
@@ -43,17 +44,19 @@ const useFirebase = () => {
   .finally( () => setIsLoading(false));
     }
 
-    const logOut = () => {
-      setIsLoading(true)
-        signOut(auth).then(() => {
-            // Sign-out successful.
-          }).catch((error) => {
-            // An error happened.
-          })
-          .finally( () => setIsLoading(false));
-    };
 
-
+    const signWithGoogle = (location, histroy) => {
+      setIsLoading(true);
+      signInWithPopup(auth, GoogleProvider)
+      .then((result) => {
+        const user = result.user;
+        setAuthError('')
+        // ...
+      }).catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally( () => setIsLoading(false));
+    }
 
     //observer user state
     useEffect( () => {
@@ -68,7 +71,17 @@ const useFirebase = () => {
           })
            setIsLoading(false)
           return () => unsubscribe;
-    } , [])
+    } , []);
+    
+    const logOut = () => {
+      setIsLoading(true)
+        signOut(auth).then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          })
+          .finally( () => setIsLoading(false));
+    };
 
     return { 
         user,
@@ -76,6 +89,7 @@ const useFirebase = () => {
         isLoading,
         authError,
         logIn,
+        signWithGoogle,
         logOut
     }
 }

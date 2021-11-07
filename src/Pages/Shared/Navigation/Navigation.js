@@ -13,6 +13,7 @@ const Navigation = () => {
   const {user, logOut}= useAuth();
     return (
         <div>
+          
             <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
