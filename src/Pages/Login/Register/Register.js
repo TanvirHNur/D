@@ -1,11 +1,12 @@
 import { Button, CircularProgress, Container, Grid, TextField, Typography, Alert, AlertTitle  } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import login from '../../../images/login.png'
 
 const Register = (e) => {
   const [loginData, setLoginDate] =  useState({});
+  const history = useHistory()
   const {user, registerUser, isLoading,authError} = useAuth();
   
 
@@ -16,13 +17,18 @@ const Register = (e) => {
       newLoginData[field] = value;
       setLoginDate(newLoginData)
   }
-  const handleSubmit = e =>{
-    e.preventDefault()
+  const handleRegister = e =>{
+    e.preventDefault();
+    if(loginData.password.length <6){
+      alert('Password atleast 6 character')
+      return;
+  }
       if(loginData.password !== loginData.password2){
           alert('Password did not match')
           return;
       }
-      registerUser(loginData.email, loginData.password)
+    
+      registerUser(loginData.email, loginData.password, loginData.name, history)
   };
 
     return (
@@ -34,7 +40,7 @@ const Register = (e) => {
       </Typography>
     {
       ! isLoading && 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleRegister}>
       <TextField sx={{width: "75%", m:1}} onBlur={handleOnBlur}  name="name" type="text" 
       id="standard-basic" label="Your Name*" variant="standard" required />
       <TextField sx={{width: "75%", m:1}} onBlur={handleOnBlur}  name="email" type="email" 

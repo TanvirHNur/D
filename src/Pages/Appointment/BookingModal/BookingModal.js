@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import useAuth from '../../../hooks/useAuth';
 
 const style = {
   position: 'absolute',
@@ -24,6 +25,7 @@ const style = {
 
 const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
     const {name, time}=booking;
+    const {user} = useAuth();
     const  handleBookingSubmit=e=> {
       alert('Submitted');
 
@@ -51,7 +53,7 @@ const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
             <Typography id="transition-modal-title" variant="h6" component="h6">
               {name}
             </Typography>
-            <form onClick={handleBookingSubmit}>
+            <form onSubmit={handleBookingSubmit}>
             <TextField sx={{width: '90%', mb: 3}}
           id="filled-size-small"
           defaultValue={time}
@@ -60,7 +62,7 @@ const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
         />
             <TextField sx={{width: '90%', mb: 3}}
           id="filled-size-small"
-          defaultValue="Patient Name"
+          defaultValue={user.displayName}
           variant="filled"
           size="small"
           placeholder="Patient Name"
@@ -75,7 +77,7 @@ const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
           id="filled-size-small"
           variant="filled"
           size="small"
-          placeholder="Email"
+          defaultValue={user.email}
         />
          <TextField sx={{width: '90%', mb: 3}}
           id="filled-size-small"
