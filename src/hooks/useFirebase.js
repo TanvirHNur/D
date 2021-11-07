@@ -49,10 +49,11 @@ const useFirebase = () => {
       setIsLoading(true);
       signInWithPopup(auth, GoogleProvider)
       .then((result) => {
-        const user = result.user;
+        // const user = result.user;
         setAuthError('')
         // ...
       }).catch((error) => {
+        // const error = error.message;
         setAuthError(error.message);
       })
       .finally( () => setIsLoading(false));

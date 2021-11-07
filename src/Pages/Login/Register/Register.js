@@ -9,7 +9,7 @@ const Register = (e) => {
   const {user, registerUser, isLoading,authError} = useAuth();
   
 
-  const handleOnchange = e =>{
+  const handleOnBlur = e =>{
       const field = e.target.name;
       const value= e.target.value;
       const newLoginData = {...loginData};
@@ -35,10 +35,12 @@ const Register = (e) => {
     {
       ! isLoading && 
       <form onSubmit={handleSubmit}>
-      <TextField sx={{width: "75%", m:1}} onChange={handleOnchange}  name="email" type="email" 
+      <TextField sx={{width: "75%", m:1}} onBlur={handleOnBlur}  name="name" type="text" 
+      id="standard-basic" label="Your Name*" variant="standard" required />
+      <TextField sx={{width: "75%", m:1}} onBlur={handleOnBlur}  name="email" type="email" 
       id="standard-basic" label="Your Email" variant="standard" required />
-      <TextField sx={{width: "75%", m:1}}  onChange={handleOnchange}  name="password" id="standard-basic" label="password" variant="standard" type="password" />
-      <TextField sx={{width: "75%", m:1}}  onChange={handleOnchange}  name="password2" id="standard-basic" label="Retype Your password" variant="standard" type="password" />
+      <TextField sx={{width: "75%", m:1}}  onBlur={handleOnBlur}  name="password" id="standard-basic" label="password" variant="standard" type="password" />
+      <TextField sx={{width: "75%", m:1}}  onBlur={handleOnBlur}  name="password2" id="standard-basic" label="Retype Your password" variant="standard" type="password" />
       <br />
       
       <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{backgroundColor: '#5CE7ED'}}>Register</Button>

@@ -1,4 +1,5 @@
 import { Alert, AlertTitle, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { NavLink, useLocation,useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -6,7 +7,7 @@ import login from '../../../images/login.png'
 
 const Login = (e) => {
   const [loginData, setLoginDate] =  useState({});
-  const {user, isLoading, authError, logIn} = useAuth();
+  const {user, isLoading, authError, logIn, signWithGoogle} = useAuth();
 
   const location = useLocation();
   const histroy = useHistory();
@@ -23,6 +24,9 @@ const Login = (e) => {
 
     e.preventDefault()
   };
+  const HandlesignWithGoogle =() => {
+      signWithGoogle(location,histroy)
+  }
 
     return (
         <Container>
@@ -33,10 +37,11 @@ const Login = (e) => {
       </Typography>
     {
       !isLoading && 
-      <form onSubmit={handleSubmit}>
-      <TextField sx={{width: "75%", m:1}} onChange={handleOnchange}  name="email"
+      <Box>
+        <form onSubmit={handleSubmit}>
+      <TextField sx={{width: "75%", m:1}} onBlur={handleOnchange}  name="email"
       id="standard-basic" label="Your Email" variant="standard" />
-      <TextField sx={{width: "75%", m:1}}  onChange={handleOnchange}  name="password" id="standard-basic" label="Your Email" variant="standard" type="password" />
+      <TextField sx={{width: "75%", m:1}}  onBlur={handleOnchange}  name="password" id="standard-basic" label="Your Email" variant="standard" type="password" />
       <br />
       <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{backgroundColor: '#5CE7ED'}}>Login</Button>
     <br />
@@ -44,6 +49,9 @@ const Login = (e) => {
       <Button variant="text">New to Doctor's Portal?</Button>
       </NavLink>
     </form>
+    <br />
+      <Button onClick={HandlesignWithGoogle} sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{backgroundColor: '#5CE7ED'}}>Sign with Google</Button>
+      </Box>
     }
   
     {
