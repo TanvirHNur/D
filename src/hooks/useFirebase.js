@@ -67,6 +67,8 @@ updateProfile(auth.currentUser, {
       signInWithPopup(auth, GoogleProvider)
       .then((result) => {
         // const user = result.user;
+        const destination = location.state.from || '/';
+        histroy.replace(destination);
         setAuthError('')
         // ...
       }).catch((error) => {

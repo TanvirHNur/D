@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import useAuth from '../../../hooks/useAuth';
+import { ConstructionOutlined } from '@mui/icons-material';
+import { Alert } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -23,7 +25,7 @@ const style = {
 
 
 
-const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
+const BookingModal = ({openBooking, handleCloseBooking, booking, date, setBookingSucces}) => {
     const {name, time}=booking;
     const {user} = useAuth();
     const initailInfo = {patientName: user.displayName, email: user.email, phone: ''} 
@@ -44,8 +46,24 @@ const BookingModal = ({openBooking, handleCloseBooking, booking, date}) => {
         servicesName: name,
         date: date.toLocaleDateString()
       };
+
+      //send data to db
+      fetch('http://localhost:5000/appointments', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(appointment)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.insertedId){
+          setBookingSucces(true)
+          handleCloseBooking();
+        }
+      })
       
-      handleCloseBooking()
+      
       e.preventDefault();
     }
 

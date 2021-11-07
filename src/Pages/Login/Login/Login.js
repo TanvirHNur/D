@@ -25,7 +25,7 @@ const Login = (e) => {
     e.preventDefault()
   };
   const HandlesignWithGoogle =() => {
-      signWithGoogle(location,histroy)
+      signWithGoogle(location,histroy);
   }
 
     return (
@@ -50,7 +50,7 @@ const Login = (e) => {
       </NavLink>
     </form>
     <br />
-      <Button onClick={HandlesignWithGoogle} sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{backgroundColor: '#5CE7ED'}}>Sign with Google</Button>
+      <Button onClick={HandlesignWithGoogle} sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{backgroundColor: '#5CE7ED'}}>Sign in with Google</Button>
       </Box>
     }
   
