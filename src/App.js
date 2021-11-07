@@ -1,4 +1,3 @@
-
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -11,6 +10,7 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 
 function App() {
@@ -22,6 +22,9 @@ function App() {
           <PrivateRoute path="/appointment">
             <Appointment/>
           </PrivateRoute>
+          <Route path="/dashboard">
+            <Dashboard/>
+          </Route>
           <Route path="/home">
             <Home />
           </Route>

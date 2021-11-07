@@ -34,9 +34,15 @@ const Navigation = () => {
           </NavLink>
           {
             user?.email ? 
+            <>
+            <NavLink to="/dashboard" style={{textDecoration: 'none', color: 'white'}}>
+          <Button  color="inherit" onClick={logOut}>Dashboard</Button>
+          </NavLink> 
             <NavLink to="/" style={{textDecoration: 'none', color: 'white'}}>
           <Button  color="inherit" onClick={logOut}>Log out</Button>
-          </NavLink> : 
+          </NavLink> 
+          </>
+          : 
           <NavLink style={{textDecoration: 'none', color: 'white'}} to="/login">
           <Button color="inherit">Login</Button>
           </NavLink>

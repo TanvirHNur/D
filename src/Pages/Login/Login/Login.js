@@ -41,7 +41,7 @@ const Login = (e) => {
         <form onSubmit={handleSubmit}>
       <TextField sx={{width: "75%", m:1}} onBlur={handleOnchange}  name="email"
       id="standard-basic" label="Your Email" variant="standard" />
-      <TextField sx={{width: "75%", m:1}}  onBlur={handleOnchange}  name="password" id="standard-basic" label="Your Email" variant="standard" type="password" />
+      <TextField sx={{width: "75%", m:1}}  onBlur={handleOnchange}  name="password" id="standard-basic" label="password" variant="standard" type="password" />
       <br />
       <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{backgroundColor: '#5CE7ED'}}>Login</Button>
     <br />
