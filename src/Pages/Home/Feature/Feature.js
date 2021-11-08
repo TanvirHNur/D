@@ -1,4 +1,5 @@
 import React from 'react';
+import Bounce from 'react-reveal/Fade';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -6,7 +7,8 @@ import treatment from '../../../images/treatment.png'
 import { Button, Container, Typography } from '@mui/material';
 
 const Feature = () => {
-    return (
+    return ( 
+        <Bounce left>
         <Container sx={{mt: 4}}>
             <Grid container spacing={3} sx={{ alignItems: 'center' }}>
         <Grid item xs={12} md={6} >
@@ -20,6 +22,7 @@ const Feature = () => {
        
       </Grid>
         </Container>
+        </Bounce>
     );
 };
 

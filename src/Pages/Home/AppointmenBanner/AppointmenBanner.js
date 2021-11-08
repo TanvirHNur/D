@@ -1,4 +1,5 @@
 import React from 'react';
+import Bounce from 'react-reveal/Fade';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import doctor from '../../../images/doctor.png';
@@ -14,6 +15,7 @@ const appointmenbanner = {
 
 const AppointmenBanner = () => {
     return (
+      <Bounce left>
         <Box style={appointmenbanner} sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
@@ -41,6 +43,7 @@ const AppointmenBanner = () => {
           
         </Grid>
       </Box>
+      </Bounce>
     );
 };
 
