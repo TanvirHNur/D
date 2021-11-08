@@ -73,9 +73,9 @@ function Dashboard(props) {
           <Typography variant="h6" noWrap component="div">
             Dashboard
           </Typography>
-          <NavLink to="/dashboard" style={{textDecoration: 'none', color: 'white'}}>
-          <Button  color="inherit">Dashboard</Button>
-          </NavLink> 
+          <NavLink style={{textDecoration: 'none', color: 'white'}} to="/appointment">
+          <Button color="inherit">Appointment</Button>
+          </NavLink>
         </Toolbar>
       </AppBar>
       <Box
