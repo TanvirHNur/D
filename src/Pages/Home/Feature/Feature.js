@@ -1,7 +1,5 @@
 import React from 'react';
 import Bounce from 'react-reveal/Fade';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import treatment from '../../../images/treatment.png'
 import { Button, Container, Typography } from '@mui/material';
