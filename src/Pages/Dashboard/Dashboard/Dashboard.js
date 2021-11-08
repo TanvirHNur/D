@@ -35,6 +35,9 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
+      <NavLink sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} to="/appointment">
+          <Button color="inherit">Appointment</Button>
+          </NavLink>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -42,6 +45,7 @@ function Dashboard(props) {
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>
             <ListItemText primary={text} />
+            
           </ListItem>
         ))}
       </List>
