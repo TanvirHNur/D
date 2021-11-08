@@ -25,7 +25,7 @@ const drawerWidth = 200;
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [date, setDate] = React.useState(new Date);
+  const [date, setDate] = React.useState(new Date());
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
