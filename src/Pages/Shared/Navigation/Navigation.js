@@ -12,45 +12,45 @@ import useAuth from '../../../hooks/useAuth';
 const Navigation = () => {
   const {user, logOut}= useAuth();
     return (
-        <div>
-          
-            <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Doctor's Portal
-          </Typography>
-          <NavLink style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED'}} to="/appointment">
-          <Button color="inherit">Appointment</Button>
-          </NavLink>
-          {
-            user?.email ? 
-            <>
-            <NavLink to="/dashboard" style={{textDecoration: 'none', color: 'white'}}>
-          <Button  color="inherit">Dashboard</Button>
-          </NavLink> 
-            <NavLink to="/" style={{textDecoration: 'none', color: 'white'}}>
-          <Button  color="inherit" onClick={logOut}>Log out</Button>
-          </NavLink> 
-          </>
-          : 
-          <NavLink style={{textDecoration: 'none', color: 'white'}} to="/login">
-          <Button color="inherit">Login</Button>
-          </NavLink>
-          }
-        </Toolbar>
-      </AppBar>
-    </Box>
-        </div>
+          <div>
+            
+              <Box sx={{ flexGrow: 1 }}>
+              <AppBar position="static">
+                <Toolbar>
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 2 }}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    Doctor's Portal
+                  </Typography>
+                  <NavLink style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED'}} to="/appointment">
+                  <Button color="inherit">Appointment</Button>
+                  </NavLink>
+                  {
+                    user?.email ? 
+                    <>
+                    <NavLink to="/dashboard" style={{textDecoration: 'none', color: 'white'}}>
+                  <Button  color="inherit">Dashboard</Button>
+                  </NavLink> 
+                    <NavLink to="/" style={{textDecoration: 'none', color: 'white'}}>
+                  <Button  color="inherit" onClick={logOut}>Log out</Button>
+                  </NavLink> 
+                  </>
+                  : 
+                  <NavLink style={{textDecoration: 'none', color: 'white'}} to="/login">
+                  <Button color="inherit">Login</Button>
+                  </NavLink>
+                  }
+                </Toolbar>
+              </AppBar>
+            </Box>
+          </div>
     );
 };
 

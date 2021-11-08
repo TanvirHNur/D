@@ -17,7 +17,6 @@ const Appointments = ({date}) => {
         .then(res=> res.json())
         .then(data=> setAppointments(data))
     } , [date])
-    console.log(appointments)
     return (
         <div>
             <h2>Appointments {appointments.length} </h2>
