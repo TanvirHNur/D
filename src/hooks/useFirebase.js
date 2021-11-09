@@ -68,11 +68,12 @@ updateProfile(auth.currentUser, {
       setIsLoading(true);
       signInWithPopup(auth, GoogleProvider)
       .then((result) => {
-        // const user = result.user;
-        const destination = location.state.from || '/';
-        histroy.replace(destination);
+        const user = result.user;
+        saveUser(user.email, user.displayName, 'PUT')
         setAuthError('')
         // ...
+        const destination = location?.state?.from || '/';
+        histroy.push(destination);
       }).catch((error) => {
         // const error = error.message;
         setAuthError(error.message);
@@ -104,10 +105,10 @@ updateProfile(auth.currentUser, {
           })
           .finally( () => setIsLoading(false));
     };
-    const saveUser = (email,displayName)=> {
+    const saveUser = (email,displayName, method)=> {
         const user = {email, displayName};
         fetch('http://localhost:5000/users', {
-          method: 'POST',
+          method: method,
           headers: {
             'content-type': 'application/json'
           },
