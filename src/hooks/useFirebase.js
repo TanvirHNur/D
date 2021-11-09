@@ -23,7 +23,7 @@ const useFirebase = () => {
     // Signed in 
     setAuthError('');
     //save user to database
-    saveUser(email, name)
+    saveUser(email, name, 'POST')
 
     //send data to firebase
     const auth = getAuth();
