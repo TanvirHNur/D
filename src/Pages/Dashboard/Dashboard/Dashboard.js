@@ -22,6 +22,9 @@ import {
 } from "react-router-dom";
 import { Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import DashboardHome from '../DashbordHome/DashboardHome';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AddDoctor from '../AddDoctor/AddDoctor';
 
 const drawerWidth = 200;
 
@@ -41,6 +44,15 @@ function Dashboard(props) {
       <NavLink sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} to="/appointment">
           <Button color="inherit">Appointment</Button>
           </NavLink>
+      <Link to={`${url}`} sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} >
+          <Button color="inherit">Dashboard</Button>
+          </Link>
+      <Link to={`${url}/makeAdmin`} sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} >
+          <Button color="inherit">Make Admin</Button>
+          </Link>
+      <Link to={`${url}/addDoctor`} sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} >
+          <Button color="inherit">Add Doctor</Button>
+          </Link>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -122,7 +134,17 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        
+          <Switch>
+              <Route exact path={path}>
+              <DashboardHome />
+              </Route>
+              <Route path={`${path}/makeAdmin`}>
+              <MakeAdmin></MakeAdmin>
+              </Route>
+              <Route path={`${path}/addDoctor`}>
+                <AddDoctor></AddDoctor>
+              </Route>
+          </Switch>
       </Box>
     </Box>
   );
