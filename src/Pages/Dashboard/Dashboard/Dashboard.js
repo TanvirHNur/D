@@ -16,15 +16,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {
-  BrowserRouter as Router,
   Switch,
-  Route, Link, useParams, useRouteMatch
+  Route, Link, useRouteMatch
 } from "react-router-dom";
 import { Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import DashboardHome from '../DashbordHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddDoctor from '../AddDoctor/AddDoctor';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 200;
 
@@ -32,6 +32,7 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const {path, url} = useRouteMatch();
+  const  {admin} = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -47,12 +48,16 @@ function Dashboard(props) {
       <Link to={`${url}`} sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} >
           <Button color="inherit">Dashboard</Button>
           </Link>
-      <Link to={`${url}/makeAdmin`} sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} >
+      {
+        admin && <Box>
+          <Link to={`${url}/makeAdmin`} sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} >
           <Button color="inherit">Make Admin</Button>
           </Link>
       <Link to={`${url}/addDoctor`} sx={{p: 3}} style={{textDecoration: 'none', color: 'white', backgroundColor: '#5CE7ED', padding: '5px'}} >
           <Button color="inherit">Add Doctor</Button>
           </Link>
+        </Box>
+      }
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
