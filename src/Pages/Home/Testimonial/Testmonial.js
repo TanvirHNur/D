@@ -8,7 +8,7 @@ const Testmonial = ({patient}) => {
         
         <Grid item xs={3} sm={4} md={4}>
              <Card sx={{ minWidth: 275 }}>
-      <CardContent>
+      <CardContent style={{boxShadow: '10px 10px 20px #d3d3d3'}}>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
          {des}
         </Typography>

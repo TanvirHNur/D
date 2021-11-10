@@ -61,7 +61,7 @@ updateProfile(auth.currentUser, {
   .catch((error) => {
     setAuthError(error.message);
   })
-  .finally( () => setIsLoading(false));
+  // .finally( () => setIsLoading(false));
     }
 
 
@@ -92,8 +92,9 @@ updateProfile(auth.currentUser, {
               // User is signed out
               setUser({})
             }
+            setIsLoading(false)
           })
-           setIsLoading(false)
+          
           return () => unsubscribe;
     } , []);
     
