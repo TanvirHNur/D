@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import initializeFirebaseAuth from "../Pages/Login/firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, updateProfile,  signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile,  signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, getIdToken } from "firebase/auth";
 
 initializeFirebaseAuth();
 
@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
     const [admin, setAdmin] = useState(false);
+    const [token, setToken] = useState('')
 
     const auth = getAuth();
     const GoogleProvider = new GoogleAuthProvider();
@@ -89,6 +90,11 @@ updateProfile(auth.currentUser, {
             if (user) {
               setUser(user)
               // ...
+              getIdToken(user)
+              .then(idToken => {
+                console.log(idToken);
+                setToken(idToken)
+              })
             } else {
               // User is signed out
               setUser({})
